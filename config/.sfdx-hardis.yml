@@ -3,12 +3,11 @@
 # Doc: https://sfdx-hardis.cloudity.com/salesforce-devops-config-home/
 
 projectName: HeliosEnergy
+monitoringRepository: https://github.com/maximeg44/sfdx-hardis-training-monitoring
 
 # --- Pipeline -------------------------------------------------------------
-# At Levels 1 and 2 the pipeline is integration then uat, both deploying to
-# scratch orgs that Set up my training environment creates. main exists in the
-# fork with no org yet, and preprod does not exist: Lab 3.1 creates it, and gives
-# both their orgs.
+# Work travels through integration, uat, preprod and main.
+# The first two stages use scratch orgs; the final two use Developer Editions.
 developmentBranch: integration
 productionBranch: main
 # How the CI job gets into an org. Levels 1 and 2 use auth URLs kept in
@@ -17,14 +16,18 @@ productionBranch: main
 # JWT certificate and leaves integration and uat on the shortcut, which a real
 # project would not do, so this setting stays as it is.
 orgAuthenticationMode: secretsOnly
-# One entry on purpose. A contributor at Levels 1 and 2 has exactly one place
-# to send a User Story, and a question with one answer is a question that
-# cannot be got wrong. uat is a major branch all the same: work reaches it by
-# promotion, never by a User Story. Lab 3.1 adds preprod here, for hotfixes.
+# Contributors deliver to integration; agreed hotfixes start from preprod.
+# uat and main receive work by promotion rather than by a User Story.
 availableTargetBranches:
   - integration
+  - preprod
 availableTargetBranchesLabels:
   - "The shared integration org, where every contributor merges"
+  - "Hotfixes on the production version, agreed with the release manager"
+enablePromotionBranches: true
+allowedPromotionSteps:
+  - source: uat
+    target: preprod
 
 # Branch naming for new User Stories
 branchPrefixChoices:
