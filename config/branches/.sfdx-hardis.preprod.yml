@@ -1,0 +1,4 @@
+targetUsername: maxime.guenego.e352bbf29374@agentforce.com
+instanceUrl: https://login.salesforce.com
+mergeTargets:
+  - main
