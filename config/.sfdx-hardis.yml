@@ -3,6 +3,7 @@
 # Doc: https://sfdx-hardis.cloudity.com/salesforce-devops-config-home/
 
 projectName: HeliosEnergy
+monitoringRepository: https://github.com/maximeg44/sfdx-hardis-training-monitoring
 
 # --- Pipeline -------------------------------------------------------------
 # Work travels through integration, uat, preprod and main.
