@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <!-- The list every sfdx-hardis project starts with (sf hardis:project:create).
-       Remote site settings are left out on purpose: Lab 3.5 adds Helios_Warehouse. -->
+       Each org keeps its own warehouse endpoint once the setting exists. -->
   <!-- Approval processes can contain reference to usernames -->
   <types>
       <members>*</members>
@@ -76,6 +76,10 @@
   <types>
     <members>*</members>
     <name>WaveXmd</name>
+  </types>
+  <types>
+      <members>Helios_Warehouse</members>
+      <name>RemoteSiteSetting</name>
   </types>
   <version>59.0</version>
 </Package>
